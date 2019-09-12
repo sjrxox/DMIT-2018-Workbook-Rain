@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BloggingDemo.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +33,21 @@ namespace BloggingDemo
             public int PostId { get; set; }
             public string Title { get; set; } 
             public string Content { get; set; }
+           
         }
+    }
+    namespace DAL
+    {
+        public class BloggingContext : DbContext
+        {
+            public BloggingContext() : base("name=BlogDb")
+            {
+
+            }
+
+            public DbSet<Blog> Blogs { get; set; }
+            public DbSet<Post> Posts { get; set; }
+                    }
+        
     }
 }
