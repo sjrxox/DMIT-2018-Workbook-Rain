@@ -3,7 +3,7 @@
     <h1>View Products</h1>
 
 
-    <asp:GridView ID="ProductGridView" runat="server" AutoGenerateColumns="False" DataSourceID="ProductsDataSource">
+    <asp:GridView ID="ProductGridView" CssClass="table table-hover" runat="server" AutoGenerateColumns="False" DataSourceID="ProductsDataSource">
 
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="ProductID" SortExpression="ProductID"></asp:BoundField>
