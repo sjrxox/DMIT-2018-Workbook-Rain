@@ -38,7 +38,7 @@ namespace WestWindSystem.BLL
 
         #region Categories CRUD
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<Category> ListCategoriess()
+        public List<Category> ListCategories()
         {
             using (var context = new WestWindContext())
             {
