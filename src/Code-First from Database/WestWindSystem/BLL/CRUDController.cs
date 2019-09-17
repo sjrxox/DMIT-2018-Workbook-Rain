@@ -37,6 +37,7 @@ namespace WestWindSystem.BLL
 
 
         #region Categories CRUD
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Category> ListCategoriess()
         {
             using (var context = new WestWindContext())
@@ -48,6 +49,7 @@ namespace WestWindSystem.BLL
 
 
         #region Addresses CRUD
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Address> ListAddresses()
         {
             using (var context = new WestWindContext())
