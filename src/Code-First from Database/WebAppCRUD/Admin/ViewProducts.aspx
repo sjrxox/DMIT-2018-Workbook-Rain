@@ -3,19 +3,26 @@
     <h1>View Products</h1>
 
 
-    <asp:GridView ID="ProductGridView" CssClass="table table-hover" runat="server" AutoGenerateColumns="False" DataSourceID="ProductsDataSource">
+    <asp:GridView ID="ProductGridView" CssClass="table table-hover" runat="server" AutoGenerateColumns="False" DataSourceID="ProductsDataSource" ItemType="WestWindSystem.Entities.Product">
 
         <Columns>
             <asp:BoundField DataField="ProductID" HeaderText="ProductID" SortExpression="ProductID"></asp:BoundField>
             <asp:BoundField DataField="ProductName" HeaderText="ProductName" SortExpression="ProductName"></asp:BoundField>
 
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Supplier">
                 <ItemTemplate>
-                    <asp:DropDownList ID="SupplierDropDown" runat="server" DataSourceID="SupplierDataSource" DataTextField="CompanyName" DataValueField="SupplierID"></asp:DropDownList>
+                    <asp:DropDownList ID="SupplierDropDown" runat="server" DataSourceID="SupplierDataSource" SelectedValue="<%# Item.SupplierID %>" DataTextField="CompanyName" DataValueField="SupplierID" Enabled="false"></asp:DropDownList>
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:BoundField DataField="CategoryID" HeaderText="CategoryID" SortExpression="CategoryID"></asp:BoundField>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:DropDownList ID="CategoryDropDown" runat="server" DataSourceID="CategoryDataSource" SelectedValue="<%# Item.CategoryID %>" DataTextField="CategoryName" DataValueField="CategoryID">
+
+                    </asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
+            
             <asp:BoundField DataField="QuantityPerUnit" HeaderText="QuantityPerUnit" SortExpression="QuantityPerUnit"></asp:BoundField>
             <asp:BoundField DataField="MinimumOrderQuantity" HeaderText="Min Qty" SortExpression="MinimumOrderQuantity"></asp:BoundField>
             <asp:BoundField DataField="UnitPrice" HeaderText="Price" SortExpression="UnitPrice"></asp:BoundField>
