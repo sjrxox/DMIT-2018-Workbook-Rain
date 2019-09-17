@@ -8,6 +8,15 @@
                 <div id="itemPlaceholder" runat="server"></div>
             </blockquote>
         </LayoutTemplate>
+
+        <ItemTemplate>
+            <div>
+                <b><%# Item.CompanyName %></b>
+                &ndash;
+                <i><%# Item.ContactName %></i>
+                (<%# Item.ContactTitle %> - <%# Item.Phone %>)
+            </div>
+        </ItemTemplate>
     </asp:ListView>
 
     <asp:ObjectDataSource ID="SupplierDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
