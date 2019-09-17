@@ -9,10 +9,10 @@
                 <b><%# Item.CategoryName %></b>
                 &mdash;
                 <i><%# Item.Description %></i>
-                <img src="" />
+                <img src="data:<%# Item.PictureMimeType %>;base64,<%# Convert.ToBase64String(Item.Picture) %>" width="50" />
             </li>
         </ItemTemplate>
-        <SeparatorTemplate></SeparatorTemplate>
+        <SeparatorTemplate><hr /></SeparatorTemplate>
         <FooterTemplate></ul></FooterTemplate>
     </asp:Repeater>
 
