@@ -5,12 +5,17 @@
     <asp:Repeater ID="CategoryRepeater" runat="server" DataSourceID="CategoryDataSource" ItemType="WestWindSystem.Entities.Category">
         <HeaderTemplate><ul></HeaderTemplate>
         <ItemTemplate>
-            <li><%# Item.CategoryName %></li>
+            <li>
+                <b><%# Item.CategoryName %></b>
+                &mdash;
+                <i><%# Item.Description %></i>
+                <img src="" />
+            </li>
         </ItemTemplate>
         <SeparatorTemplate></SeparatorTemplate>
         <FooterTemplate></ul></FooterTemplate>
     </asp:Repeater>
 
-    <asp:ObjectDataSource ID="CategoryDatSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCategories" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="CategoryDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListCategories" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
 
 </asp:Content>
