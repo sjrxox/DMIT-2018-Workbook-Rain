@@ -13,7 +13,7 @@ void Main()
 	var result = 
 	from person in Employees
 	where person.EmployeeTerritories.Count >= 7
-	select new // TerritorialSalesRep
+	select new TerritorialSalesRep
 	{
 	   Title = person.JobTitle,
 	   First = person.FirstName,
@@ -21,6 +21,14 @@ void Main()
 	   Territories = from place in person.EmployeeTerritories
 	                 select place.Territory.TerritoryDescription
 	};
+	result.Dump();
 }
 
 // Define other methods and classes here
+public class TerritorialSalesRep
+{
+	public string Title {get; set;}
+	public string First {get; set;}
+	public string Last {get; set;}
+	public IEnumerable<string> Territories {get; set;}
+}
