@@ -10,7 +10,7 @@
 // as well as the names of all the territories they are responsible for
 from person in Employees
 where person.EmployeeTerritories.Count >= 7
-select new
+select new // TerritorialSalesRep
 {
    Title = person.JobTitle,
 
