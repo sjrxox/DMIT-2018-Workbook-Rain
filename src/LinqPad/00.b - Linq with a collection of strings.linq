@@ -1,5 +1,11 @@
 <Query Kind="Program" />
 
+// To do:
+/*
+
+*/
+
+
 void Main()
 {
     Instructors.Dump();
@@ -11,6 +17,7 @@ void Main()
 	best.Dump("The best instructors");
 }
 
+// Extension method (dump)
 // Define other methods and classes here
 public IEnumerable<string> Instructors
 {
