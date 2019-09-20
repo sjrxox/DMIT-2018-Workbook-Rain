@@ -17,17 +17,23 @@
                         <th>Fax</th>
                     </tr>
                 </thead>
-                <div id="itemPlaceholder" runat="server"></div>
+                <tbody>
+                    <div id="itemPlaceholder" runat="server"></div>
+                </tbody>
             </table>
         </LayoutTemplate>
 
         <ItemTemplate>
-            <div>
-                <b><%# Item.CompanyName %></b>
-                &ndash;
-                <i><%# Item.ContactName %></i>
-                (<%# Item.ContactTitle %> - <%# Item.Phone %>)
-            </div>
+            <tr>
+                <td><%# Item.SupplierID%></td>
+                <td><%# Item.CompanyName %></td>
+                <td><%# Item.ContactName %></td>
+                <td><%# Item.ContactTitle %></td>
+                <td><%# Item.Email %></td>
+                <td><%# Item.AddressID %></td>
+                <td><%# Item.Phone %></td>
+                <td><%# Item.Fax %></td>
+            </tr>
         </ItemTemplate>
     </asp:ListView>
 
