@@ -21,6 +21,7 @@
         </LayoutTemplate>
 
         <InsertItemTemplate>
+            <tr class="bg-success">
                     <tr>
                         <td>
                             <asp:LinkButton ID="AddSupplier" runat="server" CssClass="btn btn-success glyphicon glyphicon-plus" CommandName="Insert">
@@ -37,7 +38,7 @@
                             <asp:TextBox ID="Email" runat="server" Text="<%# BindItem.Email %>" TextMode="Email" placeholder="Email" />
                         </td>
                         <td>
-                            <asp:DropDownList ID="AddressDropDown" runat="server" DataSourceID="AddressDataSource" DataTextField="FullAddress" DataValueField="AddressID" SelectedValue="<%# BindItem.AddressID %>">
+                            <asp:DropDownList ID="AddressDropDown" runat="server" AppendDataBoundItems="true" DataSourceID="AddressDataSource" DataTextField="FullAddress" DataValueField="AddressID" SelectedValue="<%# BindItem.AddressID %>">
                                 <asp:ListItem Value="">[Select address on file]</asp:ListItem>
                             </asp:DropDownList>                   
                         </td>
@@ -48,9 +49,11 @@
                         </td>
 
                     </tr>
+            </tr>
         </InsertItemTemplate>
 
         <EditItemTemplate>
+            <tr class="bg-info">
                     <tr>
                         <td>
                             <asp:LinkButton ID="UpdateSupplier" runat="server" CssClass="btn btn-success glyphicon glyphicon-ok" CommandName="Update">Save
@@ -78,6 +81,7 @@
                         </td>
 
                     </tr>
+            </tr>
         </EditItemTemplate>
 
 
