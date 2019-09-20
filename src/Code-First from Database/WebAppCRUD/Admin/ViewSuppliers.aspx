@@ -4,9 +4,21 @@
 
     <asp:ListView ID="SupplierLisView" runat="server" DataSourceID="SupplierDataSource" ItemType="WestWindSystem.Entities.Supplier">
         <LayoutTemplate>
-            <blockquote>
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Supplier</th>
+                        <th>Company Name</th>
+                        <th>Contact Name</th>
+                        <th>Contact Title</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Fax</th>
+                    </tr>
+                </thead>
                 <div id="itemPlaceholder" runat="server"></div>
-            </blockquote>
+            </table>
         </LayoutTemplate>
 
         <ItemTemplate>
