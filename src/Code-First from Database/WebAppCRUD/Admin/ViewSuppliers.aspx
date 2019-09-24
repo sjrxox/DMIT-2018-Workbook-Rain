@@ -2,7 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>View Suppliers</h1>
 
-    <asp:ListView ID="SupplierLisView" runat="server" DataSourceID="SupplierDataSource" InsertItemPosition="FirstItem" ItemType="WestWindSystem.Entities.Supplier">
+    <asp:Label ID="MessageLabel" runat="server" />
+
+    <asp:ListView ID="SupplierLisView" runat="server" DataSourceID="SupplierDataSource" InsertItemPosition="FirstItem" 
+        OnItemInserting="SupplierLisView_ItemInserting" OnItemInserted="SupplierLisView_ItemInserted" ItemType="WestWindSystem.Entities.Supplier">
         <LayoutTemplate>
             <table class="table table-hover table-condensed">
                 <thead>
@@ -24,7 +27,7 @@
             <tr class="bg-success">
                     <tr>
                         <td>
-                            <asp:LinkButton ID="AddSupplier" runat="server" CssClass="btn btn-success glyphicon glyphicon-plus" CommandName="Insert">
+                            <asp:LinkButton ID="AddSupplier" runat="server" CssClass="btn btn-success glyphicon glyphicon-plus" CommandName="Insert"> Add
                             </asp:LinkButton>
                         </td>
                         <td>
@@ -88,7 +91,7 @@
         <ItemTemplate>
             <tr>
                 <td>
-                    <asp:LinkButton ID="EditSupplier" runat="server" CssClass="btn btn-info glyphicon glyphicon-pencil" CommandName="Edit">Edit</asp:LinkButton>
+                    <asp:LinkButton ID="EditSupplier" runat="server" CssClass="btn btn-info glyphicon glyphicon-pencil" CommandName="Edit"> Edit</asp:LinkButton>
                 </td>
  
                 <td><%# Item.CompanyName %></td>
@@ -124,7 +127,9 @@
         </ItemTemplate>
     </asp:ListView>
 
-    <asp:ObjectDataSource ID="SupplierDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.CRUDController" DataObjectTypeName="WestWindSystem.Entities.Supplier" InsertMethod="AddSupplier"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="SupplierDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListSuppliers" TypeName="WestWindSystem.BLL.CRUDController" 
+        DataObjectTypeName="WestWindSystem.Entities.Supplier" InsertMethod="AddSupplier" OnInserting="SupplierDataSource_Inserting" OnInserted="SupplierDataSource_Inserted"></asp:ObjectDataSource>
 
-    <asp:ObjectDataSource ID="AddressDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAddresses" TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="AddressDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListAddresses" 
+        TypeName="WestWindSystem.BLL.CRUDController"></asp:ObjectDataSource>
 </asp:Content>

@@ -13,5 +13,40 @@ namespace WebAppCRUD.Admin
         {
 
         }
+
+        protected void SupplierLisView_ItemInserting(object sender, ListViewInsertEventArgs e)
+        {
+            // This fires just before ListView calls 
+            // the ObjectDataSource control to do an insert.
+            ; // no-op 
+        }
+
+        protected void SupplierLisView_ItemInserted(object sender, ListViewInsertedEventArgs e)
+        {
+            // This event is fired afterthe ObjectDatSource
+            // has returned from performing an insert.
+            ; 
+        }
+
+        protected void SupplierDataSource_Inserting(object sender, ObjectDataSourceMethodEventArgs e)
+        {
+            ; // Before calling the BLL 
+        }
+
+        protected void SupplierDataSource_Inserted(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            ; // After the call to the BLL
+
+            if(e.Exception != null)
+            {
+                Exception inner = e.Exception;
+                while (inner.InnerException != null)
+                    inner = inner.InnerException;
+
+                string message = $"Problem inserting<blockquote>{ inner.Message}</blockquote>";
+                MessageLabel.Text = message;
+                e.ExceptionHandled = true;
+            }
+        }
     }
 }
