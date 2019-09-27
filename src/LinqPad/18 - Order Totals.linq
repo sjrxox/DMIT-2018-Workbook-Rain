@@ -1,7 +1,6 @@
-<Query Kind="Expression">
+<Query Kind="Statements">
   <Connection>
-    <ID>5265d1f5-021e-4878-9587-a78d45e7824e</ID>
-    <Persist>true</Persist>
+    <ID>05a2444e-14ea-4451-ad3d-3398e9ff7898</ID>
     <Server>.</Server>
     <Database>WestWind</Database>
   </Connection>
@@ -9,8 +8,8 @@
 
 // List all the orders showing the order ID, Company Name, Freight Charge,
 // and Subtotal (no discounts) as well as the Subtotal of the discount.
-from sale in Orders
-select new
+var result = from sale in Orders
+Select New
 {
     OrderId = sale.OrderID,
     Company = sale.Customer.CompanyName,
@@ -18,5 +17,8 @@ select new
     Subtotal = sale.OrderDetails.Sum(lineItem => lineItem.Quantity * lineItem.UnitPrice),
     DiscountSubtotal = 
         sale.OrderDetails.Sum(lineItem =>
-                              lineItem.Quantity * lineItem.UnitPrice * (decimal)lineItem.Discount)
-}
+                              lineItem.Quantity * lineItem.UnitPrice * (Decimal)lineItem.Discount)
+};
+
+var highestToLowest = result.OrderBy(sale => sale.Subtotal);
+highestToLowest.Dump();
