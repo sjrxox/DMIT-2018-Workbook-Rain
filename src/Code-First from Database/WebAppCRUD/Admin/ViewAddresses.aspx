@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewAddresses.aspx.cs" Inherits="WebAppCRUD.Admin.ViewAddresses" %>
+
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Address CRUD</h1>
 
+    <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
     <asp:ListView ID="AddressLstView" runat="server" DataSourceID="AddressDataSource" DataKeyNames="AddressID" InsertItemPosition="FirstItem">
 
@@ -47,6 +51,10 @@
         </InsertItemTemplate>
         <ItemTemplate>
             <tr style="">
+                <td>
+                    <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" />
+                    <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
+                </td>
 
                 <td>
                     <asp:Label Text='<%# Eval("Address1") %>' runat="server" ID="Address1Label" /></td>
@@ -78,7 +86,15 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style=""></td>
+                    <td runat="server" style="">
+                        <asp:DataPager runat="server" ID="DataPager1" PageSize="7">
+                            <Fields>
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="true" ShowNextPageButton="false" ShowPreviousPageButton="false" />
+                                <asp:NumericPagerField />
+                                <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="true" ShowNextPageButton="false" ShowPreviousPageButton="false" />
+                            </Fields>
+                        </asp:DataPager>
+                    </td>
                 </tr>
             </table>
         </LayoutTemplate>
