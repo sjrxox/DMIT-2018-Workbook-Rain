@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FreeCode.WebApp.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,14 @@ namespace WebAppCRUD.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            if (e.Exception == null)
+                MessageUserControl.ShowInfo("Success");
+            else
+                MessageUserControl.HandleDataBoundException(e);
         }
     }
 }
