@@ -10,6 +10,11 @@ namespace RmedialOOP
     {
         static void Main(string[] args)
         {
+            var things = new Bunch<string>();
+            things.Add("Dan");
+            things.Add("Don");
+            things.Add("Brad Pitt");
+            Console.WriteLine($"There are {things.Count} names in my list");
         }
     }
 }
