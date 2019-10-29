@@ -95,5 +95,19 @@ public class OrderItem
 All product shipments are handled by the **`OrderProcessingController`**. It supports the following methods
 
 - **`List<OutstandingOrder> LoadOrders(int, supplierId)`**
+    - **Validation:**
+        - Make sure the supplier ID exixts, otherwise throw an exception
+        - [Advanced] *Make sure the logged-in user works for the identified supplier.*
+    - Query for outstanding orders, getting data from the following tables:
+        - TODO: List table names
 - **`List<ShipperSelection> ListShipper()`**
-- **`void ShipOrder(int orderId, ShippingDirections shippingm List<ShippedItems> items)`**
+    - Get all the shippers from the Db
+- **`void ShipOrder(int orderId, ShippingDirections shipping List<ShippedItems> items)`**
+    - **Validation:**
+        - OrderId must be valid 
+        - `ShippingDirections` is required (cannot be `null`)
+        - `List<ShippedItem>` cannot be empty/null
+        - The product must be on the order
+        - Quantities must be greater than zero and less than or equal to the quantity outstanding
+        - Shipper must exists
+        - Freight charge must be either null (no charge) or greater than zero (> $0.00)
