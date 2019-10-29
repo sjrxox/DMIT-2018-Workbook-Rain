@@ -111,3 +111,5 @@ All product shipments are handled by the **`OrderProcessingController`**. It sup
         - Quantities must be greater than zero and less than or equal to the quantity outstanding
         - Shipper must exists
         - Freight charge must be either null (no charge) or greater than zero (> $0.00)
+    - **Processing** (tables/data that must be updated/inserted/deleted/whatever)
+        - 
