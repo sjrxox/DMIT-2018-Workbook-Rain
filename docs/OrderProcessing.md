@@ -91,3 +91,9 @@ public class OrderItem
 ```
 
 ## BLL Processing
+
+All product shipments are handled by the **`OrderProcessingController`**. It supports the following methods
+
+- **`List<OutstandingOrder> LoadOrders(int, supplierId)`**
+- **`List<ShipperSelection> ListShipper()`**
+- **`void ShipOrder(int orderId, ShippingDirections shippingm List<ShippedItems> items)`**
