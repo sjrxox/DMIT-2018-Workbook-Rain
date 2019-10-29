@@ -107,9 +107,11 @@ All product shipments are handled by the **`OrderProcessingController`**. It sup
         - OrderId must be valid 
         - `ShippingDirections` is required (cannot be `null`)
         - `List<ShippedItem>` cannot be empty/null
-        - The product must be on the order
+        - The product must be on the order AND items that this supplier provides
         - Quantities must be greater than zero and less than or equal to the quantity outstanding
         - Shipper must exists
         - Freight charge must be either null (no charge) or greater than zero (> $0.00)
     - **Processing** (tables/data that must be updated/inserted/deleted/whatever)
-        - 
+        - Create new Shipment
+        - Add all manifest items
+        - Check if order is complete; if so, update Order.Shipped
