@@ -19,6 +19,20 @@
                 <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
             </p>
         </div>
+        <div class="row">
+            <div class ="col-md-4">
+                <h2>People in my neighborhood</h2>
+                <asp:GridView ID="PeopleGridView" runat="server" AutoGenerateColumns="False" DataSourceID="DemoDataSource">
+                    <Columns>
+                        <asp:BoundField DataField="PersonID" HeaderText="PersonID" SortExpression="PersonID"></asp:BoundField>
+                        <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName"></asp:BoundField>
+                        <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName"></asp:BoundField>
+                        <asp:BoundField DataField="BirthDate" HeaderText="BirthDate" SortExpression="BirthDate"></asp:BoundField>
+                    </Columns>
+                </asp:GridView>
+                <asp:ObjectDataSource ID="DemoDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListPeople" TypeName="DemoSystem.BLL.DemoController"></asp:ObjectDataSource>
+            </div>
+        </div>
         <div class="col-md-4">
             <h2>Get more libraries</h2>
             <p>
