@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity; // For the the Database.SetInitializer() method
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -39,6 +40,7 @@ namespace WebApp.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            // TODO: Set our database initialization strategy
         }
 
         public static ApplicationDbContext Create()
