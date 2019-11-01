@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -18,8 +20,28 @@ namespace WebApp.Admin.Security
     {
         protected override void Seed(ApplicationDbContext context)
         {
+            // To "seed" a database is to provide it with some initial data
+            // when the database is created
+
+            #region Seed the security roles
+            // Make the Identity's BLL instance to help us manage roles
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            // The RoleManager<T> and the RoleStore<T> are BLL classes that give flexibility
+            // to the design/structure of how we're using Asp.Net Identity.
+            // The IdentityRole is an Entity class that represents a security role.
+
+            // TODO: Move these hard-coded security roles to web.config
+            roleManager.Create(new IdentityRole { Name = "Administrator" });
+            roleManager.Create(new IdentityRole { Name = "Registered Users" });
+
+            #endregion
+
+            #region Seed the users
+            #endregion
+            #region
             // Note: Keep this call to the base class so it can do its seeding work
             base.Seed(context);
+            #endregion
         }
     }
 }
