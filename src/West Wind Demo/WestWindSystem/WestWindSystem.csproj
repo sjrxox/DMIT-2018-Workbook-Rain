@@ -55,6 +55,10 @@
     <Compile Include="BLL\ProductManagementController.cs" />
     <Compile Include="BLL\SalesController.cs" />
     <Compile Include="BLL\SetupUserRegistrationController.cs" />
+    <Compile Include="DAL\OrderItem.cs" />
+    <Compile Include="DAL\OutstandingOrder.cs" />
+    <Compile Include="DAL\ShipperSelection.cs" />
+    <Compile Include="DAL\ShippingDirections.cs" />
     <Compile Include="DataModels\DatabaseVersion.cs" />
     <Compile Include="DataModels\EditCustomerOrder.cs" />
     <Compile Include="DataModels\InvoiceHeader.cs" />
