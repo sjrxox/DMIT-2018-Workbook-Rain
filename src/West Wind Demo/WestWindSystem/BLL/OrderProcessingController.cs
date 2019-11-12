@@ -25,8 +25,17 @@ namespace WestWindSystem.BLL
 
         public List<ShipperSelection> ListShipper()
         {
-            throw new NotImplementedException();
-            // TODO: Get all the shippers from the Db
+            using (var context = new WestWindContext())
+            {
+                var result = from shipper in context.Shippers
+                             orderby shipper.CompanyName
+                             select new ShipperSelection
+                             {
+                                 ShipperId = shipper.ShipperID,
+                                 Shipper = shipper.CompanyName
+                             };
+                return result.ToList();
+            }
         }
 
         public void ShipOrder(int orderId, ShippingDirections shipping, List<ShippedItem> items)
