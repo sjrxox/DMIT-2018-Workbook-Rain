@@ -13,7 +13,7 @@ namespace WestWindSystem.BLL
         #region Queries
         public List<OutstandingOrder> LoadOrders(int supplierId)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             // TODO: Implement this method with the following
             /*
              * Validation:
@@ -22,6 +22,50 @@ namespace WestWindSystem.BLL
                 Query for outstanding orders, getting data from the following tables:
                     TODO: List table names
              */
+            using (var context = new WestWindContext()) // Using my DAL object
+            {
+                // validation
+                var supplier = context.Suppliers.Find(supplierId);
+                if (supplier == null)
+                    throw new Exception("Invalid Supplier - unable to load orders");
+
+
+                // Processing
+                var result =
+                from sale in context.Orders
+                where !sale.Shipped
+                && sale.OrderDate.HasValue
+                select new OutstandingOrder
+                   {
+                OrderId = sale.OrderID,
+                ShipToName = sale.ShipName,
+                OrderDate = sale.OrderDate.Value,
+                RequiredBy = sale.RequiredDate.Value,
+                OutstandingItems =
+                    from item in sale.OrderDetails
+                    where item.Product.SupplierID == supplierId
+                    select new OrderItem
+                    {
+                        ProductID = item.ProductID,
+                        ProductName = item.Product.ProductName,
+                        Qty = item.Quantity,
+                        QtyPerUnit = item.Product.QuantityPerUnit,
+                        // TODO: Figure out the Outstanding quantity
+                        //						Outstanding = (from ship in item.Order.Shipments
+                        //						              from shipItem in ship.ManifestItems
+                        //									  where shipItem.ProductID == item.ProductID
+                        //									  select shipItem.ShipQuantity).Sum()
+                    },
+                    FullShippingAddress = //TODO: how to use sale.ShipAddressID,
+                      sale.Customer.Address.Street + Environment.NewLine +
+                      sale.Customer.Address.City + ", " +
+                      sale.Customer.Address.Region + Environment.NewLine +
+                      sale.Customer.Address.Country + " " +
+                      sale.Customer.Address.PostalCode,
+                Comments = sale.Comments
+            };
+                return result.ToList();
+            }
         }
 
         public List<ShipperSelection> ListShipper()
