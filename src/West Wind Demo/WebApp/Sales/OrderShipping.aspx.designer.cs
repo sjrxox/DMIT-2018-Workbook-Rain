@@ -20,5 +20,23 @@ namespace WebApp.Sales {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal SupplierInfo;
+        
+        /// <summary>
+        /// CurrentOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView CurrentOrders;
+        
+        /// <summary>
+        /// SupplierOrderDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource SupplierOrderDataSource;
     }
 }
