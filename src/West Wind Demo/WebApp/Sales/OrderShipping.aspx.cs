@@ -72,19 +72,24 @@ namespace WebApp.Sales
 
                         TextBox qty = row.FindControl("ShipQuantity") as TextBox;
 
-                        if (prodId != null && qty != null && short.TryParse(qty.Text, out quantity))
-                        {
-                            ShippedItem item = new ShippedItem
-                            {
-                                Product = prodId.Value,
-                                Quantity = quantity
-                            };
-                            goods.Add(item);
-                        }
+                        //if (prodId != null && qty != null && short.TryParse(qty.Text, out quantity))
+                        //{
+                        //    ShippedItem item = new ShippedItem
+                        //    {
+                        //        Product = prodId.Value,
+                        //        Quantity = quantity
+                        //    };
+                        //    goods.Add(item);
+                        //}
                     }
                 }
-                var controller = new OrderProcessingController();
-                controller.ShipOrder(orderId, shipInfo, goods);
+                MessageUserControl.TryRun(() =>
+                {
+
+
+                    var controller = new OrderProcessingController();
+                    controller.ShipOrder(orderId, shipInfo, goods);
+                }, "Order shipment recorded", "The products identified as shipped are recorded in the database");
             }
         }
     }
