@@ -7,21 +7,22 @@
             <p>
                 <asp:Literal ID="SupplierInfo" runat="server" />
             </p>
-            <asp:ListView ID="CurrentOrders" runat="server" DataSourceID="SupplierOrderDataSource" ItemType="WestWindSystem.DAL.OutstandingOrder">
+            <asp:ListView ID="CurrentOrders" runat="server" DataSourceID="SupplierOrderDataSource" ItemType="WestWindSystem.DAL.OutstandingOrder"
+                 OnItemCommand="CurrentOrders_ItemCommand">
 
                
                 <EditItemTemplate>
                     <tr style="">
                         <td>
-                            (<asp:Label Text='<%# Eval("OrderId") %>' runat="server" ID="OrderIdLabel" />)
-                            <asp:Label Text='<%# Eval("ShipToName") %>' runat="server" ID="ShipToNameLabel" />
+                            (<asp:Label Text='<%# Item.OrderId %>' runat="server" ID="OrderIdLabel" />)
+                            <%# Item.ShipToName %>
 
                         </td>
 
                         <td>
-                            <asp:Label Text='<%# Item.OrderDate.ToString("MMM dd, yyyy") %>' runat="server" ID="OrderDateLabel" /></td>
+                            <%# Item.OrderDate.ToString("MMM dd, yyyy") %></td>
                         <td>
-                            <asp:Label Text='<%# Item.RequiredBy.ToString("MMM dd, yyyy") %>' runat="server" ID="RequiredByLabel" /> - in <%# Item.DaysRemaining %> days</td>
+                            <%# Item.RequiredBy.ToString("MMM dd, yyyy") %> - in <%# Item.DaysRemaining %> days</td>
 
                         <td>
                             <asp:LinkButton ID="EditOrder" runat="server" CommandName="Cancel" CssClass="btn btn-default">
@@ -34,7 +35,7 @@
                             <asp:Label ID="OrderComments" runat="server" Text="<%# Item.Comments %>"/>
                             <asp:DropDownList ID="ShipperDropDown" runat="server" DataSourceID="ShipperDataSource" DataTextField="Shipper" DataValueField="ShipperId"
                                 CssClass="form-control"
-                                AppendDataBoundItems="true"><asp:ListItem Value="">[Select a Shipper]</asp:ListItem></asp:DropDownList>
+                                AppendDataBoundItems="true"><asp:ListItem Value="0">[Select a Shipper]</asp:ListItem></asp:DropDownList>
 
                             <asp:GridView ID="ProductsGridView" runat="server"
                                 CssClass="table table-hover table-condensed"
@@ -48,6 +49,7 @@
                                     <asp:BoundField DataField="Outstanding" HeaderText="Outstanding" />
                                     <asp:TemplateField HeaderText="Ship Quantity">
                                         <ItemTemplate>
+                                            <asp:HiddenField ID="ProductId" runat="server" Value="<%# Item.ProductID %>" />
                                             <asp:TextBox ID="ShipQuantity" runat="server"></asp:TextBox>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -73,15 +75,15 @@
                 <ItemTemplate>
                     <tr style="">
                         <td>
-                            (<asp:Label Text='<%# Eval("OrderId") %>' runat="server" ID="OrderIdLabel" />)
-                            <asp:Label Text='<%# Eval("ShipToName") %>' runat="server" ID="ShipToNameLabel" />
+                            (<%# Item.OrderId %>)
+                            <%# Item.ShipToName %>
 
                         </td>
 
                         <td>
-                            <asp:Label Text='<%# Item.OrderDate.ToString("MMM dd, yyyy") %>' runat="server" ID="OrderDateLabel" /></td>
+                          <%# Item.OrderDate.ToString("MMM dd, yyyy") %></td>
                         <td>
-                            <asp:Label Text='<%# Item.RequiredBy.ToString("MMM dd, yyyy") %>' runat="server" ID="RequiredByLabel" /> - in <%# Item.DaysRemaining %> days</td>
+                          <%# Item.RequiredBy.ToString("MMM dd, yyyy") %> - in <%# Item.DaysRemaining %> days</td>
 
                         <td>
                             <asp:LinkButton ID="EditOrder" runat="server" CommandName="Edit" CssClass="btn btn-default">
