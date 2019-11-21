@@ -119,26 +119,7 @@
                         </tr>
                     </table>
                 </LayoutTemplate>
-                <SelectedItemTemplate>
-                    <tr style="">
-                        <td>
-                            <asp:Label Text='<%# Eval("OrderId") %>' runat="server" ID="OrderIdLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("ShipToName") %>' runat="server" ID="ShipToNameLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("OrderDate") %>' runat="server" ID="OrderDateLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("RequiredBy") %>' runat="server" ID="RequiredByLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("DaysRemaining") %>' runat="server" ID="DaysRemainingLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("OutstandingItems") %>' runat="server" ID="OutstandingItemsLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("FullShippingAddress") %>' runat="server" ID="FullShippingAddressLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Eval("Comments") %>' runat="server" ID="CommentsLabel" /></td>
-                    </tr>
-                </SelectedItemTemplate>
+              
             </asp:ListView>
             <asp:ObjectDataSource ID="ShipperDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="ListShipper" TypeName="WestWindSystem.BLL.OrderProcessingController"></asp:ObjectDataSource>
             <asp:ObjectDataSource ID="SupplierOrderDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="LoadOrders" TypeName="WestWindSystem.BLL.OrderProcessingController">
