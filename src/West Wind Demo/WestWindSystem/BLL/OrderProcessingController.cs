@@ -179,12 +179,13 @@ namespace WestWindSystem.BLL
                         ShipQuantity = item.Quantity
                     });
                 }
-                /*
-                 * Processing (tables/data that must be updated/inserted/deleted/whatever)
-                   
-                    Add all manifest items
-                    Check if order is complete; if so, update Order.Shipped
-                 */
+                // TODO 3) Check if order is complete, if so, update Order.Shipped
+
+                // 4) Add the shipment to the context
+                context.Shipments.Add(ship);
+
+                // 5) Save the changes (as a single transaction)
+                context.SaveChanges();
             }
         }
         #endregion
